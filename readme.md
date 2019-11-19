@@ -8,6 +8,8 @@ Need Install db internet-broadband
 
 Akses DB .env
 
+
+RUN :
 php artisan config:cache
 php artisan migrate
 php artisan serve
