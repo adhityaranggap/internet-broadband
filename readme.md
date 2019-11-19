@@ -1,6 +1,13 @@
 # internet-broadband
 
 ![TampilanUtama](https://github.com/cloudsample6/internet-broadband/blob/master/screenshot.png)
-php artisan config:cache
 
+
+Need Install Composer
+Need Install db internet-broadband
+
+Akses DB .env
+
+php artisan config:cache
+php artisan migrate
 php artisan serve
