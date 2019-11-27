@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -11,19 +13,59 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
-    {
-        return "ini nama ".$id;
-    }
+   
+        public function index()
+        {
+            // mengambil data dari table pegawai
+            $users = DB::table('users')->paginate(10);
+     
+            // mengirim data pegawai ke view index
+            return view('customer',['users' => $users]);
+     
+        }
+    
+        public function formulir()
+        {
+            return view ('formulir');
+        }
+    
+        public function proses(Request $request)
+        {
+            $nama = $request->input('nama');
+             $alamat = $request->input('alamat');
+            return "Nama : ".$nama.", Alamat : ".$alamat;
+        }
 
+        public function cari(Request $request)
+        {
+            // menangkap data pencarian
+            $cari = $request->cari;
+     
+                // mengambil data dari table pegawai sesuai pencarian data
+            $users = DB::table('users')
+            ->where('nama','like',"%".$cari."%")
+            ->paginate();
+     
+                // mengirim data pegawai ke view index
+            return view('customer',['users' => $users]);
+     
+        }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        Users::create([
+            'nama'  => $request->nama,
+            'username'  =>  $request->username,
+            'contact_person'    =>  $request->contact_person,
+            'alamat'    => $request->alamat,
+            'password'  => Hash::make($request->password)
+        ]);
+        
+        return redirect()->route('customer-index');
     }
 
     /**
@@ -34,9 +76,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        Users::create($request->all());
-        
-        return 'sucess';
+        // insert data ke table pegawai
+	DB::table('users')->insert([
+		'nama' => $request->nama,
+		'username' => $request->username,
+		'contact_person' => $request->contact_person,
+		'alamat' => $request->alamat
+	]);
+	// alihkan halaman ke halaman pegawai
+	return redirect('/pegawai');
+
     }
 
     /**
@@ -58,7 +107,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+	// mengambil data pegawai berdasarkan id yang dipilih
+	$users = DB::table('users')->where('id',$id)->get();
+	// passing data pegawai yang didapat ke view edit.blade.php
+	return view('edit',['users' => $users]);
     }
 
     /**
@@ -68,9 +120,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+	// update data customer
+	DB::table('users')->where('id',$request->id)->update([
+		'nama' => $request->nama,
+		'username' => $request->username,
+		'contact_person' => $request->contact_person,
+		'alamat' => $request->alamat
+	]);
+	// alihkan halaman ke halaman pegawai
+	return redirect('/customer');
     }
 
     /**
@@ -91,4 +151,23 @@ class UsersController extends Controller
         }
         
     }
+
+
+
+
+// method untuk hapus data pegawai
+    public function hapus($id)
+    {
+	// menghapus data pegawai berdasarkan id yang dipilih
+	DB::table('users')->where('id',$id)->delete();
+		
+	// alihkan halaman ke halaman pegawai
+	return redirect('/customer');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 }

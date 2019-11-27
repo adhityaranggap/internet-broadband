@@ -13,9 +13,10 @@ class Users extends Model
     protected $fillable =[
         'id',
         'nama',
-        'alamat',
+        'username',
         'contact_person',
-        'akses_group_id',
-        'password'
+        'password',
+        'alamat',
+        'akses_group_id'
     ];
 }

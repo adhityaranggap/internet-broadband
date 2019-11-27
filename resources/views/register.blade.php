@@ -31,7 +31,16 @@
       <form action="{{ route('registrasi-create')}}" method="post">
       @csrf
         <div class="input-group mb-3">
+        <input type="hidden" id="akses_group_id" name="akses_group_id" value="2">
           <input type="text" class="form-control" placeholder="Full name" name="nama" value="{{ old('nama') }}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -74,7 +83,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <input type="checkbox" id="agreeTerms" name=" " value="agree">
               <label for="agreeTerms">
                I agree to the <a href="#">terms</a>
               </label>
@@ -100,7 +109,7 @@
         </a>
       </div>
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      <a href="{{ url('/') }}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
