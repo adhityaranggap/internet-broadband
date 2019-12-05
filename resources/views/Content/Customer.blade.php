@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Customer Internet Broadband</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
-</head>
-<body>
+@extends('layouts.mainlayout')
 
-	<div class="container">
-		<div class="card">
-			<div class="card-body">
+@section('content')
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Customer</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
+
+<div class="card-body">
 				
 
-				<h2 class="text-center"><a href=#>Customer Internet Broadband</a></h2>
-
+				
 				<h3>Data customer</h3>
 
 				<p>Cari Data customer :</p>
@@ -57,9 +58,5 @@
 
 				{{ $users->links() }}
 			</div>
-		</div>
-	</div>
 
-
-</body>
-</html>
+@endsection

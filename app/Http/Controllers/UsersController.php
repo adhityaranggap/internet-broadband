@@ -20,7 +20,7 @@ class UsersController extends Controller
             $users = DB::table('users')->paginate(10);
      
             // mengirim data pegawai ke view index
-            return view('customer',['users' => $users]);
+            return view('Content.Customer',['users' => $users]);
      
         }
     
