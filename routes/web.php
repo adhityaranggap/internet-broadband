@@ -18,35 +18,35 @@ Route::get('/', function () {
 Route::post('/', 'LoginController@login')->name('login-post');
 
 //route CRUD Users
-Route::get('/customer','UsersController@index')->name('customer-index');
+Route::get('/customer','CustomerController@index')->name('customer-index');
 
-Route::get('/customer/tambah','UsersController@tambah');
+Route::get('/customer/tambah','CustomerController@create');
 
-Route::post('/customer/store','UsersController@store');
+Route::post('/customer/store','CustomerController@store')->name('customer-create');
 
-Route::get('/customer/edit/{id}','UsersController@edit');
+Route::get('/customer/edit/{id}','CustomerController@edit');
 
-Route::post('/customer/update','UsersController@update');
+Route::post('/customer/update','CustomerController@update');
 
-Route::get('/customer/hapus/{id}','UsersController@hapus');
+Route::get('/customer/hapus/{id}','CustomerController@hapus');
 
-Route::get('/customer/cari','UsersController@cari');
+Route::get('/customer/cari','CustomerController@cari');
 
 
 Route::get('/registrasi/newcustomer/', function () {
     return view('register');
 })->name('registrasi');
 
-Route::post('/registrasi/create/', 'UsersController@create')->name('registrasi-create');
+Route::post('/registrasi/create/', 'CustomerController@store')->name('registrasi-create');
 
-Route::delete('/registrasi/delete/{id}', 'UsersController@destroy')->name('registrasi-destroy');
+Route::delete('/registrasi/delete/{id}', 'UserController@destroy')->name('registrasi-destroy');
 
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashbaord');
 
-Route::get('/home/{id}', 'UsersController@index')->name('asd');
+Route::get('/home/{id}', 'UserController@index')->name('asd');
 
 Route::get('/home/{nama}/{umur}', 'MemberTypeController@index')->name('nmumur');
 

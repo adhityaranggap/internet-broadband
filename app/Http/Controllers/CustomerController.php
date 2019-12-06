@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Users;
+// use App\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class UsersController extends Controller
         public function index()
         {
             // mengambil data dari table pegawai
-            $users = DB::table('users')->paginate(10);
-     
+            $customers = DB::table('customers')->paginate(10);
+    
             // mengirim data pegawai ke view index
-            return view('Content.Customer',['users' => $users]);
+            return view('cms.customer.index',['customers' => $customers]);
      
         }
     
@@ -42,12 +42,12 @@ class UsersController extends Controller
             $cari = $request->cari;
      
                 // mengambil data dari table pegawai sesuai pencarian data
-            $users = DB::table('users')
+            $customers = DB::table('customers')
             ->where('nama','like',"%".$cari."%")
             ->paginate();
      
                 // mengirim data pegawai ke view index
-            return view('Content.Customer',['users' => $users]);
+            return view('cms.customer.index',['customers' => $customers]);
      
         }
     /**
@@ -57,15 +57,8 @@ class UsersController extends Controller
      */
     public function create(Request $request)
     {
-        Users::create([
-            'nama'  => $request->nama,
-            'username'  =>  $request->username,
-            'contact_person'    =>  $request->contact_person,
-            'alamat'    => $request->alamat,
-            'password'  => Hash::make($request->password)
-        ]);
-        
-        return redirect()->route('customer-index');
+    
+        return view('cms.customer.create');
     }
 
     /**
@@ -76,15 +69,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // insert data ke table pegawai
-	DB::table('users')->insert([
+        // insert data ke table customer
+	    DB::table('customers')->insert([
 		'nama' => $request->nama,
 		'username' => $request->username,
 		'contact_person' => $request->contact_person,
-		'alamat' => $request->alamat
+        'alamat' => $request->alamat,
+        'router_id' => $request->router_id
 	]);
-	// alihkan halaman ke halaman pegawai
-	return redirect('/pegawai');
+	// alihkan halaman ke halaman customer
+	return redirect('/customer');
 
     }
 
@@ -108,9 +102,9 @@ class UsersController extends Controller
     public function edit($id)
     {
 	// mengambil data pegawai berdasarkan id yang dipilih
-	$users = DB::table('users')->where('id',$id)->get();
+	$customers = DB::table('customers')->where('id',$id)->get();
 	// passing data pegawai yang didapat ke view edit.blade.php
-	return view('edit',['users' => $users]);
+	return view('edit',['customers' => $customers]);
     }
 
     /**
@@ -123,7 +117,7 @@ class UsersController extends Controller
     public function update(Request $request)
     {
 	// update data customer
-	DB::table('users')->where('id',$request->id)->update([
+	DB::table('customers')->where('id',$request->id)->update([
 		'nama' => $request->nama,
 		'username' => $request->username,
 		'contact_person' => $request->contact_person,
@@ -141,12 +135,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user= Users::where('id', $id)->get();
+        $user= customers::where('id', $id)->get();
         
         if (is_null($user)){
             return 'tidak ditemukan';
         }else{
-            Users::where('id', $id)->delete();
+            customers::where('id', $id)->delete();
             return 'sucess delete';
         }
         
@@ -159,7 +153,7 @@ class UsersController extends Controller
     public function hapus($id)
     {
 	// menghapus data pegawai berdasarkan id yang dipilih
-	DB::table('users')->where('id',$id)->delete();
+	DB::table('customers')->where('id',$id)->delete();
 		
 	// alihkan halaman ke halaman pegawai
 	return redirect('/customer');

@@ -36,27 +36,27 @@
 						<th>Alamat</th>
 						<th>Opsi</th>
 					</tr>
-					@foreach($users as $p)
+					@foreach($customers as $p)
 					<tr>
 						<td>{{ $p->nama }}</td>
 						<td>{{ $p->username }}</td>
 						<td>{{ $p->contact_person }}</td>
 						<td>{{ $p->alamat }}</td>
 						<td>
-							<a class="btn btn-warning btn-sm" href="/customer/edit/{{ $p->id }}">Edit</a>
-							<a class="btn btn-danger btn-sm" href="/customer/hapus/{{ $p->id }}">Hapus</a>
+							<a class="btn btn-warning btn-sm mt_2" href="/customer/edit/{{ $p->id }}">Edit</a>
+							<a class="btn btn-danger btn-sm mt_2" href="/customer/hapus/{{ $p->id }}">Hapus</a>
 						</td>
 					</tr>
 					@endforeach
 				</table>
 
 				<br/>
-				Halaman : {{ $users->currentPage() }} <br/>
-				Jumlah Data : {{ $users->total() }} <br/>
-				Data Per Halaman : {{ $users->perPage() }} <br/>
+				Halaman : {{ $customers->currentPage() }} <br/>
+				Jumlah Data : {{ $customers->total() }} <br/>
+				Data Per Halaman : {{ $customers->perPage() }} <br/>
 				<br/>
 
-				{{ $users->links() }}
+				{{ $customers->links() }}
 			</div>
 
 @endsection
