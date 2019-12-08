@@ -17,24 +17,33 @@ Route::get('/', function () {
 
 Route::post('/', 'LoginController@login')->name('login-post');
 
-//route CRUD Users
-Route::get('/customer','CustomerController@index')->name('customer-index');
+//route CRUD customer
+Route::prefix('customer')->group(function () {
+    Route::get('/','CustomerController@index')->name('customer-index');
 
-Route::get('/customer/tambah','CustomerController@create');
+    Route::get('/tambah','CustomerController@create');
+    
+    Route::post('/store','CustomerController@store')->name('customer-create');
+    
+    Route::get('/edit/{id}','CustomerController@edit');
+    
+    Route::post('/update','CustomerController@update');
+    
+    Route::get('/hapus/{id}','CustomerController@hapus');
+    
+    Route::get('/cari','CustomerController@cari');
 
-Route::post('/customer/store','CustomerController@store')->name('customer-create');
+});
 
-Route::get('/customer/edit/{id}','CustomerController@edit');
+Route::prefix('order')->group(function () {
+    
+Route::get('/','OrderController@index')->name('order-index');
 
-Route::post('/customer/update','CustomerController@update');
-
-Route::get('/customer/hapus/{id}','CustomerController@hapus');
-
-Route::get('/customer/cari','CustomerController@cari');
+});
 
 
 Route::get('/registrasi/newcustomer/', function () {
-    return view('register');
+    return view('auth.register');
 })->name('registrasi');
 
 Route::post('/registrasi/create/', 'CustomerController@store')->name('registrasi-create');

@@ -16,11 +16,12 @@ class CustomerController extends Controller
    
         public function index()
         {
-            // mengambil data dari table pegawai
+            // mengambil data dari table customer
             $customers = DB::table('customers')->paginate(10);
     
-            // mengirim data pegawai ke view index
+            // mengirim data customer ke view index
             return view('cms.customer.index',['customers' => $customers]);
+            return view('cms.order.index',['customers' => $customers]);
      
         }
     

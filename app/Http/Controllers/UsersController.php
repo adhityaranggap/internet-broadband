@@ -62,7 +62,8 @@ class UsersController extends Controller
             'username'  =>  $request->username,
             'contact_person'    =>  $request->contact_person,
             'alamat'    => $request->alamat,
-            'password'  => Hash::make($request->password)
+            'password'  => Hash::make($request->password),
+            
         ]);
         
         return redirect()->route('customer-index');
@@ -76,15 +77,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // insert data ke table pegawai
-	DB::table('users')->insert([
+        // insert data ke table customer
+	    DB::table('customers')->insert([
 		'nama' => $request->nama,
 		'username' => $request->username,
 		'contact_person' => $request->contact_person,
-		'alamat' => $request->alamat
+        'alamat' => $request->alamat,
+        'router_id' => $request->router_id
 	]);
-	// alihkan halaman ke halaman pegawai
-	return redirect('/pegawai');
+	// alihkan halaman ke halaman customer
+	return redirect('/customer');
 
     }
 
