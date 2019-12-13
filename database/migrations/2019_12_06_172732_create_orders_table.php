@@ -18,8 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('customer_id');
             $table->string('packages_id');
             $table->string('payment_id');            
-            $table->date('expired');            
-            $table->date('start');            
+            $table->string('period'); //bulan yang dibayarkan
+            $table->integer('multiplier'); //jumlah bulan yang dibayarkan           
             $table->string('status');            
             $table->string('notes');            
             $table->timestamps();

@@ -21,8 +21,6 @@ class CustomerController extends Controller
     
             // mengirim data customer ke view index
             return view('cms.customer.index',['customers' => $customers]);
-            return view('cms.order.index',['customers' => $customers]);
-     
         }
     
         public function formulir()

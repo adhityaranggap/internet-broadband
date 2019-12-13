@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
+    protected $table = "orders";
+   
     protected $table = 'orders';
     protected $primaryKey = 'id';
     protected $fillable =[
@@ -21,4 +24,5 @@ class Order extends Model
         'updated_at'
 
     ];
+    
 }

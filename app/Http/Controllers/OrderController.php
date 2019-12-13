@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use App\Customer;
-use App\Package;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -17,11 +17,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // mengambil data dari table pegawai
-        $orders = DB::table('orders')->paginate(10);
- 
+        // mengambil data dari table order
+        $orders = DB::table('orders')
+            ->join('customers', 'orders.customer_id', '=', 'customers.id')
+            ->join('packages', 'orders.packages_id', '=', 'packages.id')
+            ->select('orders.*','customers.*','packages.*')
+            ->get();
+        // $orders = Orders::get(); 
         // mengirim data pegawai ke view index
-        return view('cms.order.index',['orders' => $orders]);
+      return view('cms.order.index',['orders' => $orders]);
         
     }
 

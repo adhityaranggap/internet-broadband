@@ -16,13 +16,13 @@ class CreateTicketTable extends Migration
         Schema::create('ticket', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->unique();
-            $table->string('jenis_ticket');
-            $table->string('deskripsi_ticket');
-            $table->string('berkas_customer');
+            $table->string('jenisticket');
+            $table->string('deskripsiticket');
+            $table->string('berkascustomer');
             $table->string('status');
-            $table->string('note_admin');
+            $table->string('noteadmin');
             $table->string('berkas_admin');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('customer_id');
             $table->timestamps();
         });
     }

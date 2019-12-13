@@ -8,8 +8,5 @@ class Package extends Model
 {
     protected $table = "packages";
 
-    public function customers()
-    {
-    	return $this->belongsToMany('App\Customer');
-    }
+    
 }
