@@ -20,8 +20,8 @@ class CustomerSeeder extends Seeder
            'username' => $faker->username,
            'nama' => $faker->name,
             'contact_person' => $faker->phoneNumber,
-         'alamat' => $faker->address,
-        'router_id' => 1
+            'alamat' => $faker->address,
+             'router_id' => 1
             ]);
        }
 

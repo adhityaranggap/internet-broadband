@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view ('auth.login');
 });
 
 Route::post('/', 'LoginController@login')->name('login-post');
@@ -38,6 +38,9 @@ Route::prefix('customer')->group(function () {
 Route::prefix('order')->group(function () {
     
 Route::get('/','OrderController@index')->name('order-index');
+
+Route::post('/store','OrderController@store')->name('order-create');
+Route::get('/load','OrderController@loadData')->name('load-data');
 
 });
 

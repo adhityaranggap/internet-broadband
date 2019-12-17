@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-use App\Customer;
-use App\Order;
+
 
 class OrderController extends Controller
 {
@@ -28,6 +27,14 @@ class OrderController extends Controller
       return view('cms.order.index',['orders' => $orders]);
         
     }
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('customers')->select('id', 'username')->where('username', 'like', '%' . $cari . '%')->get();
+            return response()->json($data);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +54,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          // insert data ke table orders
+	    DB::table('orders')->insert([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'contact_person' => $request->contact_person,
+            'alamat' => $request->alamat,
+            'router_id' => $request->router_id
+        ]);
+        // alihkan halaman ke halaman order
+        return redirect('/order');
+    
     }
 
     /**

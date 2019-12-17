@@ -8,6 +8,7 @@
 <html lang="en">
      <head>
        @include('layouts.Partials.Head')
+       
      </head>
      <body>
        <!-- Page Wrapper -->
@@ -18,6 +19,6 @@
         @include('layouts.Partials.Footer')
       </div>
       @include('layouts.Partials.Footer-Scripts')
-
+      @stack('script')
      </body>
 </html>
