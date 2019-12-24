@@ -31,12 +31,15 @@
 
 						</div>
 						<div class="col-6">
-						<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+						<a href="{{ route('order-create') }}" class="btn btn-primary float-right modal-show">Tambah Pembayaran</a>
+						<!-- <button type="button" class="btn btn-primary float-right modal-show" data-toggle="modal" data-target="#exampleModal">
 							Tambah Pembayaran
 							</button>
-							
+							 -->
 							<!-- Modal -->
-							<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<!-- <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<form action="{{ route('order-create')}}" method="post">
+							<meta name="c-token" content="{!! csrf_token() !!}" />
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 								<div class="modal-header">
@@ -45,9 +48,7 @@
 									<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<div class="modal-body">
-								<form action="{{ route('order-create')}}" method="">
-								<meta name="c-token" content="{!! csrf_token() !!}" />
+								<div class="modal-body">										
 									<div class="form-group">
 										<label for="username">Username</label>
 										<select class="cari form-control" style="width:450px;" name="username" id="username"></select>
@@ -81,12 +82,12 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn-primary">Submit</button>
-									</form>
+									<button type="submit" class="btn btn-primary">Submit</button>									
 								</div>
 								</div>
 							</div>
-							</div>
+							</form>
+							</div> -->
 						</div>
 				<br/>
 				<br/>
@@ -116,33 +117,10 @@
 				<br/>
 			
 			</div>
-			
+	@include('layouts.modal')
 @endsection
 @push('script')
-									<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-									<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
-									<script type="text/javascript">
-									$('.cari').select2({
-										placeholder: 'Username...',
-										ajax: {
-										url: '/order/load',
-										dataType: 'json',
-										delay: 250,
-										processResults: function (data) {
-											return {
-											results:  $.map(data, function (item) {
-												return {
-												text: item.username,
-												id: item.id
-												}
-											})
-											};
-										},
-										cache: true
-										}
-									});
-
-									</script>
-									
-
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+		<script src="{{ asset('js/modal.js') }}"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
 @endpush

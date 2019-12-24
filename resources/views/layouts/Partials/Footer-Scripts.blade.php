@@ -1,27 +1,4 @@
 
-<!-- Bootstrap core JavaScript-->
-<script type="text/javascript">
-									$('.cari').select2({
-										placeholder: 'Username...',
-										ajax: {
-										url: '/order/load',
-										dataType: 'json',
-										delay: 250,
-										processResults: function (data) {
-											return {
-											results:  $.map(data, function (item) {
-												return {
-												text: item.username,
-												id: item.id
-												}
-											})
-											};
-										},
-										cache: true
-										}
-									});
-
-									</script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>

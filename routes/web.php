@@ -37,10 +37,10 @@ Route::prefix('customer')->group(function () {
 
 Route::prefix('order')->group(function () {
     
-Route::get('/','OrderController@index')->name('order-index');
-
-Route::post('/store','OrderController@store')->name('order-create');
-Route::get('/load','OrderController@loadData')->name('load-data');
+    Route::get('/','OrderController@index')->name('order-index');
+    Route::get('/create','OrderController@create')->name('order-create');
+    Route::post('/store','OrderController@store')->name('order-store');
+    Route::get('/load','OrderController@loadData')->name('load-data');
 
 });
 
@@ -61,4 +61,3 @@ Route::get('/dashboard', 'HomeController@index')->name('dashbaord');
 Route::get('/home/{id}', 'UserController@index')->name('asd');
 
 Route::get('/home/{nama}/{umur}', 'MemberTypeController@index')->name('nmumur');
-
