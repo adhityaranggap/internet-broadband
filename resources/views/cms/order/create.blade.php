@@ -1,8 +1,20 @@
-<form action="{{route('order-store')}}" method="POST">
+<!-- {!! Form::open(array('route' => 'order-store','method'=>'PUT')) !!} -->
+{!! Form::open([
+    'route'     => 'order-store',
+    'method'    => 'put',    
+]) !!}   
+<!-- <form action="{{route('order-store')}}" method="POST"> -->
+<!-- <form th:action="@{/order/store}" th:attr="data-url-base=@{/order/store}" method="POST"> -->
+
 @CSRF
+
     <div class="form-group">
-        <label for="username">Username</label>
-        <select class="cari form-control" name="customer_has_package_id" id="username"></select>
+        <!-- <label for="username">Username</label> -->
+        {{ Form::label("Username", null, ['class' => 'control-label']) }}
+
+        <!-- <select class="cari form-control" name="customer_has_package_id" id="username"></select> -->
+        {!! Form::select("customer_has_package_id",[],null,["class"=>"cari form-control" ,'style'=>'width:100%']) !!}
+
     </div>
 
     <div class="form-group">
@@ -20,7 +32,7 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="paymentdate">Tanggal Bayar</label>
+        <label for="paymentdate">Tanggal Bayar</labssel>
         <input class="form-control" name="paymentdate" type="date" value="2020-01-01" id="paymentdate">
     </div>
     <div class="form-group">
@@ -28,8 +40,8 @@
         <input type="file" name="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
         <small id="fileHelp" class="form-text text-muted">Upload Bukti Pembayaran Diterima</small>
     </div>
-
-</form>
+{!! Form::close() !!}
+<!-- </form> -->
 
 
 
@@ -37,6 +49,9 @@
 	$('.cari').select2({
 		placeholder: 'Username...',
 		ajax: {
+        // headers: {
+        //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        // }
         url: '/order/load',
         dataType: 'json',
 		delay: 250,

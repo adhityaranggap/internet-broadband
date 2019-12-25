@@ -229,7 +229,15 @@ $('#modal-btn-save').click(function(event) {
     form.find('.text-danger').remove();
 
     var form_data = new FormData($('form')[1]);
-    console.log(form_data);
+    var formdata = new FormData(form[1]);
+    
+    
+    console.log(form_data);    
+    console.log('-------');
+    console.log(formdata);
+    console.log('+++++')    
+    
+    //ssssalert(form);
 
     $.ajax({
         url: url,
@@ -237,6 +245,9 @@ $('#modal-btn-save').click(function(event) {
         data: form_data, //form.serialize(),
         processData: false,
         contentType: false,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         success: function(response) {
 
             console.log(response);
@@ -261,6 +272,8 @@ $('#modal-btn-save').click(function(event) {
             $('#modal-btn-save').removeClass('edit')
         },
         error: function(xhr) {
+
+            console.log(form_data)
             var res = xhr.responseJSON;
             if ($.isEmptyObject(res) == false) {
                 $.each(res.errors, function(key, value) {
