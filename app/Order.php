@@ -13,11 +13,10 @@ class Order extends Model
     protected $primaryKey = 'id';
     protected $fillable =[
         'id',
-        'customer_id',
-        'packages_id',
+        'customer_has_package_id',
         'payment_id',
-        'expired',
-        'start',
+        'period',
+        'multiplier',
         'status',
         'notes',
         'created_at',

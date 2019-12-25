@@ -11,10 +11,11 @@
         "php": "^7.2",
         "atnic/laravel-sb-admin-2": "^0.1.5",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.8.*",
-        "symfony/translation": "4.3.8",        
         "intervention/image": "^2.5",
-        "laravel/tinker": "^1.0"
+        "laravel/framework": "5.8.*",
+        "laravel/tinker": "^1.0",
+        "laravelcollective/html": "^5.2.0",
+        "symfony/translation": "4.3.8"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

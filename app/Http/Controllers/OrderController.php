@@ -78,7 +78,7 @@ class OrderController extends Controller
         $request['period'] = date("Y/m/d", strtotime($date));
         //insert data ke table orders
         DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
-        B::table('payment')->insert($request->except('_token', 'customer_has_package_id','period',''));
+        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period',''));
         return ('sucess');
         // alihkan halaman ke halaman order
         // return redirect('/order');
