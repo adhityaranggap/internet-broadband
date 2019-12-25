@@ -1,7 +1,7 @@
 <!-- {!! Form::open(array('route' => 'order-store','method'=>'PUT')) !!} -->
 {!! Form::open([
     'route'     => 'order-store',
-    'method'    => 'put',    
+    'method'    => 'post',    
 ]) !!}   
 <!-- <form action="{{route('order-store')}}" method="POST"> -->
 <!-- <form th:action="@{/order/store}" th:attr="data-url-base=@{/order/store}" method="POST"> -->

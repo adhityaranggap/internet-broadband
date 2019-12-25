@@ -79,7 +79,10 @@ class OrderController extends Controller
         //insert data ke table orders
         DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
         DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period',''));
+        
+
         return ('sucess');
+        // print_r($request->input());
         // alihkan halaman ke halaman order
         // return redirect('/order');
     

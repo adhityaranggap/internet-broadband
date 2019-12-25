@@ -218,6 +218,8 @@ $('body').on('click', '.btn-delete', function(event) {
 
 $('#modal-btn-save').click(function(event) {
     event.preventDefault();
+    console.log($('#Period').val());
+    
 
     var form = $('#modal-body form'),
         url = form.attr('action'),
