@@ -65,6 +65,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request['payment_id'] = '1';
+        $request['customer_has_package_id'] = '1';
+        $request['multiplier'] = '1';
+        $request['status'] = 'aktif';
+        $request['notes'] = '-';
+        $request['file'] = '-';
+
+        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
+        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period','payment_id', 'multiplier', 'status', 'notes'));
+
+        return 'sukses nembak db';
+        
         if($request->file('file')){
                 $dir = 'payment/';
                 $size = '360';

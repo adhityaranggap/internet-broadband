@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
         <label for="type">Metode Pembayaran</label>
-        <select class="form-control" id="Paymenttype">
+        <select class="form-control" id="Paymenttype" name="type">
         <option value="BCA">Bank Transfer BCA</option>
         <option value="CASH">Cash</option>
         <option value="OVO">OVO</option>
