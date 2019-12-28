@@ -20,8 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('period'); //bulan yang dibayarkan
             $table->integer('multiplier'); //jumlah bulan yang dibayarkan           
             $table->string('status');            
-            $table->string('notes');
-            $table->timestamps('paiddate');            
+            $table->string('notes');                   
             $table->timestamps();
         });
     }
