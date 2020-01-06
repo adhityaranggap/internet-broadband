@@ -33,11 +33,11 @@
     </div>
     <div class="form-group">
         <label for="paymentdate">Tanggal Bayar</labssel>
-        <input class="form-control" name="paymentdate" type="date" value="2020-01-01" id="paymentdate">
+                <input class="form-control" name="paymentdate" type="date" value="2020-01-01" id="paymentdate">
     </div>
     <div class="form-group">
         <label for="file">File Payment</label>
-        <input type="file" name="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <input type="file" name="berkas" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
         <small id="fileHelp" class="form-text text-muted">Upload Bukti Pembayaran Diterima</small>
     </div>
 {!! Form::close() !!}

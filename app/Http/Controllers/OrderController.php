@@ -20,21 +20,17 @@ class OrderController extends Controller
         $orders = DB::table('customers')
             ->join('customers_has_packages', 'customers.id', '=', 'customers_has_packages.customer_id')
             ->join('packages', 'customers_has_packages.packages_id', '=', 'packages.id')
+            ->leftJoin('orders', 'customers_has_packages.id', '=', 'orders.customer_has_package_id')
+            ->leftjoin('payments','orders.payment_id','=','payments.id')
+        
             ->get();
 
-        // $orders = DB::table('customers_has_packages')
-        // ->join('customers', 'customers_has_packages.customer_id', 'customers.id')
-        // ->join('packages', 'customers_has_packages.packages_id', '=', 'packages.id')
-        // ->select('customers.username', 'packages.nama_paket')
-        // ->get();
-
-
-            
-        // $orders = Orders::get(); 
-        // mengirim data pegawai ke view index
+        
+        // mengirim data order ke view index
       return view('cms.order.index',['orders' => $orders]);
         
     }
+    
     public function loadData(Request $request)
     {
         if ($request->has('q')) {
@@ -63,34 +59,38 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        $request['payment_id'] = '1';
-        $request['customer_has_package_id'] = '1';
+        // $request['payment_id'] = '1';
+        // $request['customer_has_package_id'] = '1';
         $request['multiplier'] = '1';
         $request['status'] = 'aktif';
         $request['notes'] = '-';
-        $request['file'] = '-';
-
-        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
-        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period','payment_id', 'multiplier', 'status', 'notes'));
-
-        return 'sukses nembak db';
+        // $request['file'] = '-';
         
-        if($request->file('file')){
-                $dir = 'payment/';
-                $size = '360';
-                $format = 'payment_';
-                $image = $request->file('file');
-                $request['file'] = \App\Helpers\ImageUploadHelper::pushStorage($dir, $size, $format, $image);
-        }
+        if($request->file('berkas')){
+            $dir = 'payment/';
+            $size = '360';
+            $format = 'payment_';
+            $image = $request->file('berkas');         
+            $request['file'] = \App\Helpers\ImageUploadHelper::pushStorage($dir, $size, $format, $image);
+    }
+        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period','payment_id', 'multiplier', 'status', 'notes', 'berkas'));
+        $paymentid = DB::getPdo()->lastInsertId();
+        $request['payment_id'] = $paymentid;
+        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type', 'berkas'));
+        return 'sukses nembak db';
+
 
         $orgDate = '1 '.$request->period;  
         $date = str_replace(' "', '/', $orgDate);  
         $request['period'] = date("Y/m/d", strtotime($date));
         //insert data ke table orders
-        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
         DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period',''));
+        $paymentid = DB::getPdo()->lastInsertId();
+        $request['payment_id'] = $paymentid;
+        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
         
 
         return ('sucess');

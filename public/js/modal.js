@@ -309,3 +309,11 @@ $('body').on('click', '.pop', function(event) {
     $('#modal-title').text(title);
     $('#modal').modal('show');
 })
+
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+        $('#modal').modal('hide');
+        $('.modal-backdrop').modal('hide');
+        $('#modal-body').modal('hide');
+    }
+});

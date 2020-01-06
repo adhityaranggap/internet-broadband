@@ -41,7 +41,8 @@ Route::prefix('order')->group(function () {
     Route::get('/create','OrderController@create')->name('order-create');
     Route::post('/store','OrderController@store')->name('order-store');
     Route::get('/load','OrderController@loadData')->name('load-data');
-
+    Route::get('/list', 'OrderController@ordersList'); 
+    Route::get('/hapus/{id}', 'OrderController@hapus')->name('delete-data');
 });
 
 
