@@ -95,7 +95,8 @@ $('body').on('click', '.btn-update', function(event) {
                         "Sukses Mengubah",
                         "Data berhasil Diubah!", "success"
                     ).then(function() {
-                        $('#appTable').DataTable().ajax.reload();
+                        location.reload();
+                        //$('#appTable').DataTable().ajax.reload();
                     });
                 },
                 error: function(xhr) {
@@ -197,7 +198,8 @@ $('body').on('click', '.btn-delete', function(event) {
                         title: 'Sukses!',
                         text: 'Data berhasil dihapus!'
                     }).then(function() {
-                        $('#appTable').DataTable().ajax.reload();
+                        location.reload();
+                        // $('#appTable').DataTable().ajax.reload();
                     });
 
                 },
@@ -261,13 +263,15 @@ $('#modal-btn-save').click(function(event) {
                 swal(
                     "Sukses Mengubah", "Data berhasil diubah!", "success"
                 ).then(function() {
-                    $('#appTable').DataTable().ajax.reload();
+                    location.reload();
+                    //$('#appTable').DataTable().ajax.reload();
                 });
             } else {
                 swal(
                     "Sukses Menambahkan", "Data berhasil ditambah!", "success"
                 ).then(function() {
-                    $('#appTable').DataTable().ajax.reload();
+                    location.reload();
+                    // $('#appTable').DataTable().ajax.reload();
                 });
             }
 
@@ -304,8 +308,12 @@ $('body').on('click', '.pop', function(event) {
     $('.modal-footer').html('');
 
     $(".modal-body").html(
-        '<img src="' + src + '" class="imagepreview" style="width: 100%;" >');
+        '<img src="' + src + '" class="imagepreview" style="width: 100%;" >'
+    );
 
+    if (me.attr('size')) {
+        $('.modal-dialog').attr('style', 'max-width: ' + me.attr('size') + ';');
+    }
     $('#modal-title').text(title);
     $('#modal').modal('show');
 })

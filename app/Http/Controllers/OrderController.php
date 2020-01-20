@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 
 class OrderController extends Controller
@@ -20,14 +20,28 @@ class OrderController extends Controller
         $orders = DB::table('customers')
             ->join('customers_has_packages', 'customers.id', '=', 'customers_has_packages.customer_id')
             ->join('packages', 'customers_has_packages.packages_id', '=', 'packages.id')
-            ->leftJoin('orders', 'customers_has_packages.id', '=', 'orders.customer_has_package_id')
+            ->join('orders', 'customers_has_packages.id', '=', 'orders.customer_has_package_id')
             ->leftjoin('payments','orders.payment_id','=','payments.id')
-        
+            ->where('orders.period', '!=', null)
+            ->orderBy('orders.period','desc')
             ->get();
 
-        
-        // mengirim data order ke view index
-      return view('cms.order.index',['orders' => $orders]);
+            
+        $arrOrders = Array();
+        foreach ($orders as $order)
+        {
+            $arrOrders[$order->customer_id]["username"] = $order->username;
+            $arrOrders[$order->customer_id]["nama"] = $order->nama;
+            $arrOrders[$order->customer_id]["harga_paket"] = $order->harga_paket;
+            $arrOrders[$order->customer_id]["status"] = $order->status;
+            $arrOrders[$order->customer_id]["period"][] = [
+                                                            'date' => Carbon::parse($order->period)->format('F Y'),
+                                                            'file'  => $order->file
+                                                        ];
+        }
+        // return $arrOrders;
+        //mengirim data order ke view index
+      return view('cms.order.index', compact('arrOrders'));
         
     }
     

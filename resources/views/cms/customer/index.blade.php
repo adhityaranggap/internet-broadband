@@ -43,8 +43,8 @@
 						<td>{{ $p->contact_person }}</td>
 						<td>{{ $p->alamat }}</td>
 						<td>
-							<a class="btn btn-warning btn-sm mt-2" href="/customer/edit/{{ $p->id }}">Edit</a>
-							<a class="btn btn-danger btn-sm mt-2" href="/customer/hapus/{{ $p->id }}">Hapus</a>
+							<a class="btn btn-warning btn-sm mt-2 modal-show edit" href="/customer/edit/{{ $p->id }}">Edit</a>
+							<a class="btn btn-danger btn-sm mt-2 btn-delete" href="/customer/hapus/{{ $p->id }}">Hapus</a>
 						</td>
 					</tr>
 					@endforeach
@@ -58,5 +58,5 @@
 
 				{{ $customers->links() }}
 			</div>
-
+		@include('layouts.modal')
 @endsection

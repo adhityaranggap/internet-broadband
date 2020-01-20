@@ -100,10 +100,13 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+
+    
 	// mengambil data pegawai berdasarkan id yang dipilih
-	$customers = DB::table('customers')->where('id',$id)->get();
+	$customer = DB::table('customers')->where('id',$id)->first();
 	// passing data pegawai yang didapat ke view edit.blade.php
-	return view('edit',['customers' => $customers]);
+    // return view('edit',['customers' => $customers]);
+    return view('cms.customer.edit', compact('customer'));
     }
 
     /**

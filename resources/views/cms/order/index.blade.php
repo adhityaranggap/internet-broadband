@@ -38,27 +38,28 @@
 				<br/>
 				<table class="table table-bordered">
 					<tr>
-						<th>ID</th>
 						<th>Username</th>
 						<th>Paket</th>
 						<th>Periode Bayar</th>
-						<th>Bukti Bayar</th>
-						<th>Opsi</th>
+						<th>Status</th>
+						<!-- <th>Opsi</th> -->
 					</tr>
 					
-					@foreach($orders as $o)
+					@forelse($arrOrders as $order)
 					<tr>
-						<td>{{ $o->customer_id }}</td>
-						<td>{{ $o->username }}</td>
-						<td>@currency ($o->harga_paket) </td>
-						<td>{{ $o->period }}</td>
-						<td><img class="pop" width="150px" src="{{ url('storage/'.$o->file) }}" title="{{$o->username}}"></td>
+						<td>{{ $order['username'] }}</td>
+						<td>@currency ($order['harga_paket']) </td>
 						<td>
-							<a class="btn btn-warning btn-sm mt-2" href="/customer/edit/{{ $o->id }}">Edit</a>
-							<a class="btn btn-danger btn-sm mt-2" href="/order/hapus/{{ $o->id }}">Hapus</a>
+						@foreach($order['period'] as $period)
+							
+							<a href="{{url('storage/'.$period['file'])}}" src="{{url('storage/'.$period['file'])}}" class="btn pop btn-primary btn-sm" size="25%" title="{{$period['date']}}">{{ $period['date'] }}</a>
+						@endforeach
 						</td>
+						<td>{{ $order['status'] }}</td>
+						
 					</tr>
-					@endforeach
+					@empty
+					@endforelse
 				</table>
 
 				<br/>

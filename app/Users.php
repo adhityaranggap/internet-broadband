@@ -11,12 +11,8 @@ class Users extends Model
     protected $guarded = array();
 
     protected $fillable =[
-        'id',
-        'nama',
+        'name',
         'username',
-        'contact_person',
-        'password',
-        'alamat',
-        'akses_group_id'
+        'password'  
     ];
 }

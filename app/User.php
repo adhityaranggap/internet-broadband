@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,11 @@ class User extends Authenticatable
     protected $casts = [
         'username_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        $data = DB::table('users')->join('akses_group', 'users.akses_group_id', 'akses_group.id')
+                ->where('users.id', auth()->user()->id)->pluck('akses_group.hak_akses')->first();
+        return $data;
+    }
 }
