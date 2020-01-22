@@ -20,7 +20,6 @@ Route::post('/', 'LoginController@login')->name('login-post');
 
 //route CRUD customer
 Route::group(['middleware' => 'auth'], function (){
-
     Route::middleware(['HakAkses'])->prefix('customer')->group(function () {
         Route::get('/','CustomerController@index')->name('customer-index');
 
@@ -37,6 +36,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/cari','CustomerController@cari');
 
     });
+    
     Route::middleware(['HakAkses'])->prefix('order')->group(function () {
     // Route::prefix('order')->group(function () {
         
@@ -71,5 +71,6 @@ Route::get('/home/{id}', 'UserController@index')->name('asd');
 
 Route::get('/home/{nama}/{umur}', 'MemberTypeController@index')->name('nmumur');
 
+Route::get('/customer/hapus/{id}', 'CustumerController@hapus')->name('delete_customer');
 
 Route::get('/home', 'HomeController@index')->name('home');

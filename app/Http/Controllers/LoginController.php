@@ -17,7 +17,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             // return ' berhasil Login, selamat datang '. auth()->user()->username;
            
-            return redirect()->route('customer-index');
+            return redirect()->route('dashbaord');
             
         }
         return 'gagal';

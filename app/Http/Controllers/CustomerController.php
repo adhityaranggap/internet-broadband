@@ -155,11 +155,19 @@ class CustomerController extends Controller
     public function hapus($id)
     {
 	// menghapus data pegawai berdasarkan id yang dipilih
-	DB::table('customers')->where('id',$id)->delete();
+	$user= customers::where('id', $id)->get();
+        
+        if (is_null($user)){
+            return 'tidak ditemukan';
+        }else{
+            customers::where('id', $id)->delete();
+            return 'sucess delete';
+        }
 		
 	// alihkan halaman ke halaman pegawai
 	return redirect('/customer');
     }
+
     /**
      * Remove the specified resource from storage.
      *

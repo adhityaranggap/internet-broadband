@@ -12,8 +12,6 @@
 
 			<div class="card-body">
 				
-
-				
 				<h3>Data customer</h3>
 
 				<p>Cari Data customer :</p>
