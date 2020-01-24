@@ -154,8 +154,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function hapus($id)
     {
-        //
+        // Delete
+        DB::table('order')->where('id', $id)->delete();
     }
 }
