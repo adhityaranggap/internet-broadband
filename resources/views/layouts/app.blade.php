@@ -24,7 +24,11 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+<<<<<<< HEAD
                     Internet Broadband
+=======
+                    {{ config('app.name', 'Internet Broadband') }}
+>>>>>>> 919005bb06cb32eb852f57c233d5189539e6aef8
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -16,7 +16,6 @@ class CreateAksesGroupTable extends Migration
         Schema::create('akses_group', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('hak_akses');
-            $table->unsignedInteger('akses_group_id');
             $table->timestamps();
         });
     }
