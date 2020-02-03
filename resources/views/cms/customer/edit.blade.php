@@ -9,19 +9,6 @@
 @CSRF
 
     <div class="form-group">
-        <!-- <label for="username">Username</label> -->
-        <!-- {{ Form::label("Username", $customer->username, ['class' => 'control-label']) }}
-        {{ Form::label("Nama", $customer->nama, ['class' => 'control-label']) }}
-        {{ Form::label("contact_person", $customer->contact_person, ['class' => 'control-label']) }}
-        {{ Form::label("alamat", $customer->alamat, ['class' => 'control-label']) }}
-        {{ Form::label("router_id", $customer->router_id, ['class' => 'control-label']) }} -->
-
-        <!-- <select class="cari form-control" name="customer_has_package_id" id="username"></select> -->
-        <!-- {!! Form::select("customer_has_package_id",[],null,["class"=>"cari form-control" ,'style'=>'width:100%']) !!} -->
-
-    </div>
-
-    <div class="form-group">
         <label for="Username">Username</label>
         <input class="form-control" name="username" type="text" value="{{$customer->username}}" id="Username">
     </div>
