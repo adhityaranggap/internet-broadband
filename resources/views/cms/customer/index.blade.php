@@ -19,23 +19,35 @@
 				<div class="form-group">
 					
 				</div>
-				<form action="/customer/cari" method="GET" class="form-inline">
-					<input class="form-control" type="text" name="cari" placeholder="Cari customer .." value="{{ old('cari') }}">
-					<input class="btn btn-primary ml-3" type="submit" value="CARI">
-				</form>
-
+					<div class="row">
+						<div class="col-6">
+					<form action="/customer/cari" method="GET" class="form-inline">
+								<input class="form-control" type="text" name="cari" placeholder="Cari customer .." value="">
+								<input class="btn btn-primary ml-3" type="submit" value="CARI">
+							</form>
+							</div>
+						
+						<div class="col-6">
+							<a href="{{ route('customer-create') }}" class="btn btn-primary float-right modal-show" title="Tambah Customer">Tambah Customer</a>
+						</div>
+				<br/>
 				<br/>
 
 				<table class="table table-bordered">
+					<thead>
 					<tr>
+						<!-- <th>ID</th> -->
 						<th>Nama</th>
 						<th>Username</th>
 						<th>Contact Person</th>
 						<th>Alamat</th>
 						<th>Opsi</th>
 					</tr>
+					</thead>
+					
 					@foreach($customers as $p)
 					<tr>
+						<!-- <td>{{ $p->id }}</td> -->
 						<td>{{ $p->nama }}</td>
 						<td>{{ $p->username }}</td>
 						<td>{{ $p->contact_person }}</td>
@@ -58,3 +70,68 @@
 			</div>
 		@include('layouts.modal')
 @endsection
+@push('script')
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+		<script src="{{ asset('js/modal.js') }}"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>		
+		<!-- <script>
+			$(document).ready(function(){
+
+			fetch_customer_data();
+
+			function fetch_customer_data(query = '')
+			{
+			$.ajax({
+			url:"{{ route('customer-cari') }}",
+			method:'GET',
+			data:{query:query},
+			dataType:'json',
+			success:function(data)
+			{
+				$('tbody').html(data.table_data);
+				$('#total_records').text(data.total_data);
+			}
+			})
+			}
+
+			$(document).on('keyup', '#search', function(){
+			var query = $(this).val();
+			fetch_customer_data(query);
+			});
+			});
+		</script> -->
+	<!-- <script>
+	
+	function load_customer(username)
+	{
+		$.ajax({
+			url: '',
+			method: 'GET',
+			data: {'username':username},
+			async: false,
+			success:function(data)
+			{
+				$('#list_customer').empty().html(data);
+			}
+		});
+	}	
+
+	$('#search_customer').keyup(function(){
+		var search = $(this).val()
+		if($search != '')
+		{
+			load_customer(search);
+		}else{
+			load_customer()
+		}
+	});
+	</script> -->
+@endpush
+
+<!-- 
+@push('css')	
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush -->

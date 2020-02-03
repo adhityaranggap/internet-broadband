@@ -75,13 +75,23 @@ class OrderController extends Controller
      */
     
     public function store(Request $request)
-    {
-        // $request['payment_id'] = '1';
-        // $request['customer_has_package_id'] = '1';
+    {       
+
+        $this->validate($request, [
+            'customer_has_package_id'   =>  'required',
+            'period'                    =>  'required',
+            'type'                      =>  'required',
+            'paymentdate'               =>  'required',
+            'berkas'                      =>  'required|mimes:jpeg,bmp,png|max:10000',
+            'notes'                     =>  'nullable',
+            'period'                    =>  'required',
+        ]);
+        
+
         $request['multiplier'] = '1';
         $request['status'] = 'aktif';
-        $request['notes'] = '-';
-        // $request['file'] = '-';
+        $request['created_at'] = now();
+        $request['period'] =  \Carbon\Carbon::parse($request->period.'-01')->format('Y-m-d');
         
         if($request->file('berkas')){
             $dir = 'payment/';
@@ -89,29 +99,14 @@ class OrderController extends Controller
             $format = 'payment_';
             $image = $request->file('berkas');         
             $request['file'] = \App\Helpers\ImageUploadHelper::pushStorage($dir, $size, $format, $image);
-    }
-        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period','payment_id', 'multiplier', 'status', 'notes', 'berkas'));
-        $paymentid = DB::getPdo()->lastInsertId();
-        $request['payment_id'] = $paymentid;
+        }
+
+        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period','payment_id', 'multiplier', 'status', 'notes', 'berkas'));    
+
+        $request['payment_id'] = DB::getPdo()->lastInsertId();;
+
         DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type', 'berkas'));
-        return 'sukses nembak db';
 
-
-        $orgDate = '1 '.$request->period;  
-        $date = str_replace(' "', '/', $orgDate);  
-        $request['period'] = date("Y/m/d", strtotime($date));
-        //insert data ke table orders
-        DB::table('payments')->insert($request->except('_token', 'customer_has_package_id','period',''));
-        $paymentid = DB::getPdo()->lastInsertId();
-        $request['payment_id'] = $paymentid;
-        DB::table('orders')->insert($request->except('_token','paymentdate','file', 'type'));
-        
-
-        return ('sucess');
-        // print_r($request->input());
-        // alihkan halaman ke halaman order
-        // return redirect('/order');
-    
     }
 
     /**

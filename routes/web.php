@@ -25,15 +25,16 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/tambah','CustomerController@create');
         
-        Route::post('/store','CustomerController@store')->name('customer-create');
+        Route::get('/create','CustomerController@create')->name('customer-create');
+
+        Route::post('/store','CustomerController@store')->name('customer-store');
         
         Route::get('/edit/{id}  ','CustomerController@edit')->name('customer-edit');
         
         Route::post('/update/{id}','CustomerController@update')->name('customer-update');
         
-        Route::get('/hapus/{id}','CustomerController@hapus');
-        
-        Route::get('/cari','CustomerController@cari');
+        Route::delete('/hapus/{id}','CustomerController@hapus');    
+        Route::get('/cari','CustomerController@cari')->name('customer-cari');
 
     });
     
@@ -47,7 +48,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/list', 'OrderController@ordersList'); 
         Route::get('/hapus/{id}', 'OrderController@hapus')->name('delete-data');
     });
-
+    Route::middleware(['HakAkses'])->prefix('kirimemail')->group(function () {
+        Route::get('/','EmailController@index')->name('kirimemail-index');
+    });
     Route::get('/logout-akun','LoginController@logout')->name('logout-akun');
     
 });
@@ -65,7 +68,7 @@ Route::delete('/registrasi/delete/{id}', 'UserController@destroy')->name('regist
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashbaord');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/home/{id}', 'UserController@index')->name('asd');
 

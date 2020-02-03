@@ -220,8 +220,6 @@ $('body').on('click', '.btn-delete', function(event) {
 
 $('#modal-btn-save').click(function(event) {
     event.preventDefault();
-    console.log($('#Period').val());
-
 
     var form = $('#modal-body form'),
         url = form.attr('action'),
@@ -232,16 +230,7 @@ $('#modal-btn-save').click(function(event) {
     form.find('.is-invalid').removeClass('is-invalid');
     form.find('.text-danger').remove();
 
-    var form_data = new FormData($('form')[3]);
-    var formdata = new FormData(form[1]);
-
-
-    console.log(form_data);
-    console.log('-------');
-    console.log(formdata);
-    console.log('+++++')
-
-    //ssssalert(form);
+    var form_data = new FormData($('form')[0]);
 
     $.ajax({
         url: url,

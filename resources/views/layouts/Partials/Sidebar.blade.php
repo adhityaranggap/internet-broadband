@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
   <div class="sidebar-brand-icon">
     <i class="fas fa-wifi"></i>
   </div>
@@ -14,7 +14,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-  <a class="nav-link" href="index.html">
+  <a class="nav-link" href="{{route('dashboard')}}">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
 </li>
@@ -28,7 +28,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<li class="nav-item active {{ Str::startsWith(Request::path(),'customer') ? 'active' : '' }}">
   <a class="nav-link collapsed" href="{{route('customer-index')}}">
     <i class="fas fa-fw fa-users"></i>
     <span>Customers</span>
@@ -76,7 +76,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<li class="nav-item active {{ Str::startsWith(Request::path(),'order') ? 'active' : '' }}">
   <a class="nav-link collapsed" href="{{route('order-index')}}">
     <i class="fas fa-fw fa-exchange-alt"></i>
     <span>Transaksi</span>

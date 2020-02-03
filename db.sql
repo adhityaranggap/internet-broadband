@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE akses_group (
   id bigint(20) UNSIGNED NOT NULL,
-  hak_akses varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  hak_akses varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table akses_group
@@ -44,13 +44,13 @@ INSERT INTO akses_group (`id`, hak_akses, created_at, `updated_at`) VALUES
 
 CREATE TABLE bank_account (
   id bigint(20) UNSIGNED NOT NULL,
-  nama varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  logo varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  account_number varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  account_owner varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  nama varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  logo varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  account_number varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  account_owner varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -60,14 +60,14 @@ CREATE TABLE bank_account (
 
 CREATE TABLE customers (
   id bigint(20) UNSIGNED NOT NULL,
-  username varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  nama varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  contact_person varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  alamat varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  username varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  nama varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  contact_person varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  alamat varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   router_id int(10) UNSIGNED NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table customers
@@ -133,11 +133,11 @@ ckages`
 
 CREATE TABLE customers_has_packages (
   id bigint(20) UNSIGNED NOT NULL,
-  customer_id varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  packages_id varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  customer_id varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  packages_id varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table customers_has_packages
@@ -203,14 +203,14 @@ INSERT INTO customers_has_packages (`id`, customer_id, packages_id, created_at, 
 
 CREATE TABLE invoice (
   id bigint(20) UNSIGNED NOT NULL,
-  code varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  code varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   tgl_invoice date NOT NULL,
-  jumlah_tagihan varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  status varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  jumlah_tagihan varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  status varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   user_id int(10) UNSIGNED NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -220,10 +220,10 @@ CREATE TABLE invoice (
 
 CREATE TABLE member_type (
   id bigint(20) UNSIGNED NOT NULL,
-  nama_type varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  nama_type varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -233,9 +233,9 @@ CREATE TABLE member_type (
 
 CREATE TABLE migrations (
   id int(10) UNSIGNED NOT NULL,
-  migration varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  migration varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   batch int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table migrations
@@ -267,15 +267,15 @@ te_customers_table', 1),
 
 CREATE TABLE orders (
   id bigint(20) UNSIGNED NOT NULL,
-  payment_id varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  customer_has_package_id varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  period varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  payment_id varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  customer_has_package_id varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  period varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   multiplier int(11) NOT NULL,
-  status varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  notes varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  status varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  notes varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table orders
@@ -297,12 +297,12 @@ INSERT INTO orders (`id`, payment_id, customer_has_package_id, period, multiplie
 
 CREATE TABLE packages (
   id bigint(20) UNSIGNED NOT NULL,
-  nama_paket varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  kec_internet varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  harga_paket varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  nama_paket varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  kec_internet varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  harga_paket varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table packages
@@ -321,10 +321,10 @@ INSERT INTO packages (`id`, nama_paket, kec_internet, harga_paket, created_at, `
 --
 
 CREATE TABLE password_resets (
-  email varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  token varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  email varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  token varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -334,12 +334,12 @@ CREATE TABLE password_resets (
 
 CREATE TABLE payments (
   id bigint(20) UNSIGNED NOT NULL,
-  type varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  type varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   paymentdate date NOT NULL,
-  file varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  file varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table payments
@@ -361,16 +361,16 @@ INSERT INTO payments (`id`, type, paymentdate, file, created_at, `updated_at`) V
 
 CREATE TABLE pembayaran (
   id bigint(20) UNSIGNED NOT NULL,
-  jenis_pembayaran varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  kategori_pembayaran varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  lampiran varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  jenis_pembayaran varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  kategori_pembayaran varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  lampiran varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `deskripsi
-` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  bank_account_id varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  bank_account_id varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   user_id int(10) UNSIGNED NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -380,15 +380,15 @@ CREATE TABLE pembayaran (
 
 CREATE TABLE router (
   id bigint(20) UNSIGNED NOT NULL,
-  SN_router varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  merk_router varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  tipe_router varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  mac_address varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  SN_router varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  merk_router varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  tipe_router varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  mac_address varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   customer_id int(10) UNSIGNED NOT NULL,
-  remember_token varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  remember_token varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -398,13 +398,13 @@ CREATE TABLE router (
 
 CREATE TABLE server_core (
   id bigint(20) UNSIGNED NOT NULL,
-  nama_server varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  type_server varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  JML_user_active varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  bw_router varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  nama_server varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  type_server varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  JML_user_active varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  bw_router varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -414,17 +414,17 @@ CREATE TABLE server_core (
 
 CREATE TABLE ticket (
   id bigint(20) UNSIGNED NOT NULL,
-  code varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  jenisticket varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  deskripsiticket varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  berkascustomer varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  status varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  noteadmin varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  berkas_admin varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  code varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  jenisticket varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  deskripsiticket varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  berkascustomer varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  status varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  noteadmin varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  berkas_admin varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   customer_id int(10) UNSIGNED NOT NULL,
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -434,15 +434,15 @@ CREATE TABLE ticket (
 
 CREATE TABLE users (
   id bigint(20) UNSIGNED NOT NULL,
-  name varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  username varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  contact_person varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  password text COLLATE utf8mb4_unicode_ci NOT NULL,
-  alamat varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  name varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  username varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  contact_person varchar(191) COLLATE utf8_unicode_ci DEFAULT NULL,
+  password text COLLATE utf8_unicode_ci NOT NULL,
+  alamat varchar(191) COLLATE utf8_unicode_ci DEFAULT NULL,
   akses_group_id int(10) UNSIGNED DEFAULT '0',
   created_at timestamp NULL DEFAULT NULL,
   updated_at timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table users
