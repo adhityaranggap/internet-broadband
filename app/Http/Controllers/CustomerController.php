@@ -229,10 +229,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 	// update data customer
-	DB::table('customers')->where('id',$request->id)->update([
+	DB::table('customers')->where('id',$id)->update([
 		'nama' => $request->nama,
 		'username' => $request->username,
 		'contact_person' => $request->contact_person,
@@ -241,7 +241,6 @@ class CustomerController extends Controller
 	// alihkan halaman ke halaman pegawai
 	return redirect('/customer');
     }
-
     /**
      * Remove the specified resource from storage.
      *

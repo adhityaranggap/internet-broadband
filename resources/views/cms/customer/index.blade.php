@@ -14,17 +14,17 @@
 				
 				<h3>Data customer</h3>
 
-				<p>Cari Data customer :</p>
+				<!-- <p>Cari Data customer :</p> -->
 
 				<div class="form-group">
 					
 				</div>
 					<div class="row">
 						<div class="col-6">
-					<form action="/customer/cari" method="GET" class="form-inline">
+					<!-- <form action="/customer/cari" method="GET" class="form-inline">
 								<input class="form-control" type="text" name="cari" placeholder="Cari customer .." value="">
 								<input class="btn btn-primary ml-3" type="submit" value="CARI">
-							</form>
+							</form> -->
 							</div>
 						
 						<div class="col-6">
@@ -72,7 +72,7 @@
 @endsection
 @push('script')
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-		<script src="{{ asset('js/modal.js') }}"></script> 
+		<!-- <script src="{{ asset('js/modal.js') }}"></script>  -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>		
