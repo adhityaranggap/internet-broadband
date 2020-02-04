@@ -42,7 +42,7 @@
 					<td>
 					@foreach($order['period'] as $period)
 						
-						<a href="{{url('storage/'.$period['file'])}}" src="{{url('storage/'.$period['file'])}}" class="btn pop btn-primary btn-sm" size="25%" title="{{$period['date']}}">{{ $period['date'] }}</a>
+						<a href="{{url('storage/'.$period['file'])}}" src="{{ asset('storage/'.$period['file']) }}" class="btn pop btn-primary btn-sm" size="25%" title="{{$period['date']}}">{{ $period['date'] }}</a>
 					@endforeach
 					</td>
 					<td>{{ $order['status'] }}</td>
