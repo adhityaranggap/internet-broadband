@@ -35,7 +35,7 @@ class CustomerController extends Controller
             return "Nama : ".$nama.", Alamat : ".$alamat;
         }
 
-        public function cari(Request $request)
+        // public function cari(Request $request)
         // {
         //     $data = null
 
@@ -147,21 +147,22 @@ class CustomerController extends Controller
 
         //     echo json_encode($data);
         //   }
-        {
-            // menangkap data pencarian
-            $cari = $request->cari;
+          
+        // {
+        //     // menangkap data pencarian
+        //     $cari = $request->cari;
      
-                // mengambil data dari table pegawai sesuai pencarian data
-            $customers = DB::table('customers')
-            ->where('nama','like',"%".$cari."%")
-            ->paginate();
+        //         // mengambil data dari table pegawai sesuai pencarian data
+        //     $customers = DB::table('customers')
+        //     ->where('nama','like',"%".$cari."%")
+        //     ->paginate();
      
-                // mengirim data pegawai ke view index
-            return view('cms.customer.index',['customers' => $customers]);
+        //         // mengirim data pegawai ke view index
+        //     return view('cms.customer.index',['customers' => $customers]);
 
 
      
-        }
+        // }
     /**
      * Show the form for creating a new resource.
      *

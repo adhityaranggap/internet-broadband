@@ -21,7 +21,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah User</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">33</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$customers}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -55,7 +55,7 @@
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Transaksi Hari Ini</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">53</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$transaction}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-exchange-alt fa-2x text-gray-300"></i>
