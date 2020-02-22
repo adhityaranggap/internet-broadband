@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view ('auth.login');
-});
+// Route::get('/', function () {
+//     return view ('auth.login');
+// });
 
 
-Route::post('/', 'LoginController@login')->name('login-post');
+// Route::post('/', 'LoginController@login')->name('login-post');
 
 //route CRUD customer
 Route::group(['middleware' => 'auth'], function (){
