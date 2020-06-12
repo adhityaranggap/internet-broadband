@@ -7,18 +7,18 @@
 <!DOCTYPE html>
 <html lang="en">
      <head>
-       @include('layouts.Partials.Head')
+       @include('layouts.Head')
        
      </head>
      <body>
        <!-- Page Wrapper -->
       <div id="wrapper">
-        @include('layouts.Partials.Sidebar')
-        @include('layouts.Partials.Topbar')
+        @include('layouts.Sidebar')
+        @include('layouts.Topbar')
         @yield('content')
-        @include('layouts.Partials.Footer')
+        @include('layouts.Footer')
       </div>
-      @include('layouts.Partials.Footer-Scripts')
+      @include('layouts.Footer-Scripts')
       @stack('script')
      </body>
 </html>
